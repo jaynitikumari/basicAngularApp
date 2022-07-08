@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="empID">ID</label>
+      <input type="number" [(ngModel)]="empID" class="form-control" id="empID" placeholder="employee Id">
+   
+      <label for="Name">Name</label>
+      <input type="text" [(ngModel)]="name" class="form-control" id="empName" placeholder="Name">
+      <label for="email">email</label>
+      <input type="email" [(ngModel)]="email" class="form-control" id="email" placeholder="Email">
+      <label for="designation">Designation</label>
+      <input type="text" [(ngModel)]="designation" class="form-control" id="designation" placeholder="Designation"><br>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+       

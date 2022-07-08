@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<nav class="navbar navbar-expand-lg navbar-light  bg-primary">
+  <a class="navbar-brand" id="all">ALL   |</a>
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" id="manager">MANAGER   |<span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" id="assistantManager">ASSISTANT MANAGER   |<span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link"  id="salesManager">SALES MANAGER   |<span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" id="salesConsultant">SALES CONSULTANT   |<span class="sr-only">(current)</span></a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="">search ID, Name, Email, or Designation</span>
+  </div>
+  <input  type="text"  [(ngModel)]="filterdata" class="form-control">
+  
+</div>
+<div class="container"> 
+ 
+ <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">NAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">DESIGNATION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of employee |filter:filterdata; let i = index">
+
+        <td>{{data.id}}</td>
+        <td>{{data.Name}}</td>
+        <td>{{data.Email}}</td>
+        <td >{{data.Designation}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <button type="button" (click)="onSave()" class="btn btn-primary" data-toggle="modal" data-target="#ADDMORE">
+   ADD MORE
+  </button>
+</div>
+
