@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Data } from '@angular/router';
-//import {employee} from 'src/app/app.component'
+import { EmployeeDataService } from 'src/app/services/employee-data.service';
+
 
 @Component({
   selector: 'app-add-data',
@@ -9,33 +10,36 @@ import { Data } from '@angular/router';
 })
 export class AddDataComponent implements OnInit {
 
-
-  empID :any;
-  name: any;
-  email: any;
-  designation:any;
-
   // @Output() addData: EventEmitter<data> => ($event)
+  public employee:any=[];
+  ids:number=0;
+  names:string='';
+  emails:string='';
+  designations:string='';
 
- constructor() { }
+ constructor(private api:EmployeeDataService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.api.employees().subscribe((data)=>{
+      console.warn("get api data",data);
+      this.employee=data
+    })
+
+   
   }
 
-  onSubmit(){
-    const data ={
-      empID:this.empID,
-      name: this.name,
-      email:this.email,
-      designation:this.designation,
-      active:true
-    
-    }
+  addData(id:any,name:any,email:any,designation:any){
+    this.ids=id;
+    this.names=name;
+    this.emails=email;
+    this.designations=designation;
+    this.employee.push({id:this.ids,Name:this.names,Email:this.emails,Designation:this.designations});
+    this.names='';
+    this.emails='';
+    this.designations='';
+    //this.showForm=0;
+  }
   }
 
-  adddata(data: Data){
-    console.log(data);
-   //this.employee.push(data);
-  }
 
-}
+
